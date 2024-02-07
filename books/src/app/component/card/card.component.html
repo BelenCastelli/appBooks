@@ -1,0 +1,15 @@
+<div class="card">
+    
+    <button type="button" class="botonEliminar" (click)="eliminarLibro(libroPadre.id_book)">X</button>
+    <h3>{{libroPadre.title}}</h3>
+        
+
+    <div>
+        <img class="portada" src="{{libroPadre.photo}}" alt="Portada libro">
+    </div>
+
+    <h4 class="autor">{{libroPadre.author}}</h4>
+    <p class="precio"> Precio: {{libroPadre.price}}&euro;</p>
+    <p class="ref">{{libroPadre.id_book | ref}} </p>
+    <button type="button" class="boton" [ngClass]="{'par': !odd, 'impar': odd}">Comprar</button>
+</div>

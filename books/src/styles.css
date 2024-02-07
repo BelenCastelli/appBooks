@@ -1,0 +1,29 @@
+/* You can add global styles to this file, and also import other style files */
+
+
+
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root{
+    --fontTitle: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    --colorText: beige;
+    --colorText2:#291d0a;
+    --backgroundFooter: linear-gradient(to top, #3d2d15, #473218, #51381a, #5c3d1d, #674221);
+    --backgroundHeader: linear-gradient(to bottom, #3d2d15, #473218, #51381a, #5c3d1d, #674221);
+    --backgroundText:  rgba(245, 245, 220, 0.38); 
+    --background: rgba(245, 245, 220, 0.842); 
+    --colorLinkHover:#b0793e;
+   
+}
+
+main{
+    background-image: url(assets/img-home/fondo.jpg);
+    background-size:auto;
+    font-family: var(--fontTitle);
+
+}

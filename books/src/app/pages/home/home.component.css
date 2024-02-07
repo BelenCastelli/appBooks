@@ -1,0 +1,48 @@
+#titulo{
+    height: 735px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+
+    color: var(--colorText2)
+}
+
+#h1, #h2{
+
+    padding: 10px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+  
+    font-weight: bold;
+    background-color: var(--backgroundText);
+    border-radius: 20px;
+}
+
+#h1{
+    width: 60%;
+}
+
+#h2{
+    width: 40%;
+}
+
+h1{
+    font-size: 26pt;
+    padding: 10px;
+}
+
+h2{
+    font-size: 24pt;
+    padding: 10px;
+}
+
+#h1:hover, #h2:hover{
+    background-image: var(--backgroundHeader);
+    color: var(--colorText);
+  
+}
+

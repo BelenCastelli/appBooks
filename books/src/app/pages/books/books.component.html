@@ -1,0 +1,34 @@
+<main>
+    <div id="encabezado">
+        <h2>Descubre mundos inexplorados, despierta tu imaginación y sumérgete en emocionantes historias.</h2>
+        <h3>Encuentra tu próximo viaje literario hoy mismo</h3>
+    </div>
+   
+    
+    <div class="buscador">
+        <input type="number" placeholder="Buscar Ref" aria-label="Buscar" #idLibro>
+        <button  class="btn btn-outline-dark" (click)="buscar(idLibro.value)">
+            <i class="fas fa-search"></i> 
+        </button>
+        <button  class="btn btn-outline-dark" (click)="getAll()">
+            <i class="fa-solid fa-book"></i>
+        </button>
+    </div>
+
+    <section id="content-libros">
+        <div class="libros"
+         *ngIf="booksFilter == undefined else filtrar">
+            <div *ngFor="let book of books; let odd = odd; let index = index">
+                <app-card [libroPadre] = "book" [odd] = "odd" [indice] = "index" [idLibro] = "book.id_book" (eventoElimina) = "eliminaLibro($event)"></app-card>
+            </div>
+        </div>
+        <ng-template #filtrar>
+            <div class="libros">
+                <app-card [libroPadre] = "booksFilter[0]" [odd] = "odd" [indice] = "index" [idLibro] = "booksFilter[0].id_book" (eventoElimina) = "eliminaLibro($event)">
+                </app-card>     
+            </div>
+        </ng-template>
+    </section>
+
+
+</main>

@@ -1,0 +1,64 @@
+<main id="contenido">
+    <section class="seccion" id="perfil">
+        <div class="s-content">
+            <div id="img-content">
+                <img id="img" src= {{user.photo}} >
+            </div>
+            <div class="datos datos-t">
+                <h4>{{user.name}} {{user.last_name}}</h4>
+            </div>
+            <div class="datos">
+                <label class="label" for="nombre">Nombre</label>
+                <input disabled ="text" id="nombre" [value]="user.name">
+            </div>
+
+            <div class="datos">
+                <label class="label" for="apellido">Apellidos</label>
+                <input disabled ="text" id="apellido" [value]="user.last_name">
+            </div>
+
+            <div class="datos">
+                <label class="label" for="email">Correo</label>
+                <input disabled ="email" id="email" [value]="user.email">
+            </div>
+        </div>
+    </section>
+
+    <section class="seccion" id="modificar">
+        <div class="s-content">
+            <div class="datos datos-t">
+                <h2>Editar datos</h2>
+            </div>
+
+            <div>
+                <form>
+                    <div class="datos">
+                        <label  for="name"></label>
+                        <input type="text" id="name" #name placeholder="Nombre">
+                    </div>
+        
+                    <div class="datos">
+                        <label  for="lastName"></label>
+                        <input type="text" id="lastName" #lastName placeholder="Apellido">
+                    </div>
+        
+                    <div class="datos">
+                        <label  for="email"></label>
+                        <input type="email" id=email #email placeholder="Correo">
+                    </div>
+                    <div class="datos">
+                        <label  for="photo"></label>
+                        <input type="url" id="photo" #photo placeholder="URL">
+                    </div>
+                    <div id="button-div">
+                        <button (click) = modificarDatos(name.value,lastName.value,email.value,photo.value) type="button" id="button-modificar">Modificar</button>
+                    </div>
+                    <div id="cambios">
+                        <p class = {{color}} [hidden] = "isHidden">Usario Actualizado</p>
+                        <p class = {{color}} [hidden] = "isHidden2">No se han detectado cambios</p>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+</main>

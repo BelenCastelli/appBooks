@@ -1,0 +1,26 @@
+<div id="header">
+    <section id="logo">
+        <p>
+            MyBooks
+        </p>
+    </section>
+
+    <aside id="menu">
+        <nav id="nav">
+            <ul class="lista" *ngIf="this.userService.logueado == false; else logueado">
+                <a routerLink="/home" class="paginas"><li>Home</li></a>
+                <a routerLink="/register" class="paginas"><li>Registro</li></a>
+                <a routerLink="/login" class="paginas"><li>Login</li></a>
+            </ul>
+            <ng-template #logueado> 
+                <ul class = 'lista'>
+                    <a routerLink="/books" class="paginas"><li>Libros</li></a>
+                    <a routerLink="/addBook" class="paginas"><li>Añade libro</li></a>
+                    <a routerLink="/updateBook" class="paginas"><li>Modificar libro</li></a>
+                    <a routerLink="/profile" class="paginas"><li>Perfil</li></a>
+                </ul>
+                
+            </ng-template>
+        </nav>
+    </aside>
+</div>

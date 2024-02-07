@@ -1,0 +1,79 @@
+.card{
+    width: 350px;
+    height: 600px;
+    margin-right: 20px;
+    margin-bottom: 40px;
+    padding: 20px;
+ 
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+
+    background-color: rgba(245, 245, 220, 0.499); 
+    color: var(--colorText2);
+}
+
+h3{
+    font-size: 20pt;
+    text-align: center;
+}
+
+ h3:hover{
+    transform: scale(1.20);
+    transition: 2s;
+}
+
+.autor, .precio, .ref, .botonComprar{
+    margin-top: 5px;
+    font-weight: bold;
+}
+.autor{
+    font-size: 22px;
+    border-bottom: solid var(--colorText2) 2px;;
+}
+
+.precio{
+    font-size: 14pt;
+}
+.portada{
+    width: 220px;
+}
+
+.boton, .botonEliminar{
+    font-family: var(--fontTitle);
+    cursor: pointer;
+}
+.boton{
+    height: 35px;
+    width: 150px;
+
+    font-size: 13pt;
+    background-image: var(--backgroundFooter);
+    color: var(--colorText);
+}
+
+.botonEliminar{
+    height: 30px;
+    width: 30px;
+    position: relative;
+    margin-top:-15px;
+    margin-right: -15px;
+    align-self: flex-end;
+    background-color: rgb(108, 10, 10);
+    color: var(--colorText);
+    border: none;
+    border-radius: 20px;
+ 
+}
+
+/* ngClass */
+  
+.par {
+    background-image: var(--backgroundFooter);
+  }
+  
+  .impar {
+    background-image: var(--backgroundHeader);
+
+  }

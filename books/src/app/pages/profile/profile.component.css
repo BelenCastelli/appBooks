@@ -1,0 +1,160 @@
+#contenido{
+    width: 100vw;
+    height: 80vh;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    color:var(--colorText2)
+}
+
+.seccion{
+    height: 500px;
+    width: 450px;
+    padding: 20px;
+
+    display: flex;
+    justify-content: center;  
+    
+    background-color: var(--backgroundText);
+}
+
+#perfil{
+    box-shadow: -10px 5px 5px rgba(0, 0, 0, 0.508);
+}
+
+#modificar{
+    border-left: dashed var(--colorText2) 4px;
+    box-shadow: 10px 5px 5px rgba(0, 0, 0, 0.508);
+}
+
+.s-content{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+#img-content{
+    width: 200px;
+    height: 200px;
+    padding-top: 20px;
+
+    display: flex;
+    justify-content: center;
+    align-self: center;
+
+    /* background-image: var(--backgroundHeader); */
+}
+
+#img{
+    width:180px;
+    height:180px;
+    border-radius: 150px;
+}
+
+.datos{
+    margin-top: 15px;
+    display: flex;
+}
+
+.datos-t{
+    margin-bottom: 20px;;
+    align-self: center;
+    border-bottom: solid var(--colorText2) 4px;
+}
+
+
+.label{
+    width: 120px;
+
+    font-size: 16pt;
+    font-weight: bold;
+}
+input{
+    height: 40px;
+    width: 250px;
+    text-align: center;
+    
+    color: var(--colorText2);
+    font-weight: bold;
+    font-size: 12pt; 
+    background-color:  var(--background);
+    border: none;
+}
+input::placeholder{
+    font-size: 14pt;
+    text-align: center;
+    color: rgba(128, 128, 128, 0.667);
+
+}
+/* input{
+    height: 30px;
+    padding: 10px;   
+
+    background-color: var(--background);
+    border: none;
+    color: var(--colorText2);
+    font-size: 14pt;
+    text-align: center;
+}
+
+input::placeholder{
+    text-align: center    
+} */
+
+form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#button-div{
+    align-self: center;
+}
+
+#button-modificar{
+    height: 40px;
+    width: 150px;
+    margin-top: 20px;
+
+    background-image: var(--backgroundFooter);
+    color: var(--colorText);
+    font-size: 14pt;
+    font-family: var(--fontTitle);
+    border: none;
+
+    cursor: pointer;
+}
+
+#button-modificar:hover{
+    background-image: none;
+    background-color: var(--background);
+    color: var(--colorText2);
+    font-weight: bold;
+}
+
+#cambios{
+    height: 85px;
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+
+    font-weight: bold;
+    font-size: 12pt;
+}
+
+.verde, .rojo{
+    background-color: var(--background);
+    padding: 10px ;
+}
+.verde{
+
+    color: green;
+}
+
+.rojo{
+    color:red;
+
+}

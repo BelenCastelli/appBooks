@@ -15,7 +15,7 @@ const postUsers = async (req, res) =>{
         let [emailResult] = await pool.query(emailExist, email)
         
         if(emailResult.length > 0){
-            respuesta = 'El correo proporcionado ya está registrado'
+            respuesta = {error: true, codigo: 200, mensaje:'El correo proporcionado ya está registrado'}
         }
 
         else {
@@ -26,15 +26,15 @@ const postUsers = async (req, res) =>{
             let newUser = 'INSERT INTO user (name, last_name, email, photo, password) VALUES (?, ?, ?, ?, ?)';
     
             let [result] = await pool.query(newUser, params);
-    
-            if (result.insertId) 
-                respuesta = String(result.insertId); 
-            else 
-                respuesta = '-1'
+                respuesta = {error: false, codigo: 200, mensaje:'Usuario registrado correctamente', data: [String(result.insertId)]}; 
+         
         }
-    res.send(respuesta)
+    res.json(respuesta)
      
-    } catch (err) {
+    } 
+    
+    catch (err) 
+    {
         console.log(err);
         res.status(500).send('Error interno del servidor');
     }
@@ -51,11 +51,14 @@ const login = async (req, res) => {
       
         let [result] = await pool.query(userExist, params);
         if(result.length == 0)
-            respuesta = 'Los datos son incorrectos o el usuario no existe'
-        else {
-             respuesta = result
-        }
-        res.send(respuesta)
+            respuesta = {error:true, codigo: 200, mensaje: 'Los datos son incorrectos o el usuario no existe'}
+           
+        else 
+            respuesta = {error:false, codigo: 200, mensaje: 'Ha iniciado sesión correctamente', usuario: result[0]}
+            console.log(result[0]);
+
+    res.json(respuesta)
+
     }
 
     catch(err)

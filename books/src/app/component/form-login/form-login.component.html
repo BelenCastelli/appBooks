@@ -1,0 +1,43 @@
+<main id="contenedor">
+    <div id="sesion">
+        <div id="title">
+            <h2>Inicia sesión</h2>
+        </div>
+
+        <form [formGroup]="loginForm">
+
+            <div class="datos">
+                <label for="email"></label>
+                <input type="email" id="email" formControlName="email"  
+                placeholder="Correo Electrónico"
+                [ngClass]="{
+                    'is-invalid': (loginForm.get('email').dirty || loginForm.get('email').touched) && !loginForm.get('email').valid,
+                    'valid': loginForm.get('email').valid
+                }">
+                <div *ngIf="!loginForm.get('email').valid" class="invalid-feedback fs-6 fw-bold">
+                    <div *ngIf="loginForm.get('email').errors.required">Direccion de email obligatoria</div>
+                    <div *ngIf="loginForm.get('email').errors.email">Direccion de email no valida</div>
+                </div>
+            </div>
+
+            <div class="datos">
+                <label for="password"></label>
+                <input type="password" id="password" formControlName="password" 
+                placeholder="contraseña"
+                [ngClass]="{
+                    'is-invalid': (loginForm.get('password').dirty || loginForm.get('password').touched) && !loginForm.get('password').valid,
+                    'valid': loginForm.get('password').valid
+                }">
+                <div *ngIf="!loginForm.get('password').valid" class="invalid-feedback fs-6 fw-bold">
+                    <div *ngIf="loginForm.get('password').errors.required">Contraseña obligatoria</div>
+                    <div *ngIf="loginForm.get('password').errors.minlength">Contraseña no valida</div>
+                </div>
+            </div>
+            <div class="datos">
+                <button (click)="login()">Registrarse</button>
+                <!-- NO HE USADO DISABLE POR TOASTR -->
+            </div>
+        </form>
+    </div>
+</main>
+

@@ -1,0 +1,42 @@
+<main id="anadir">
+    <div id="anadirContainer">
+        <div id="anadir-encabezado">
+            <h3>Modifica un libro</h3>
+       </div>
+
+       <div id="anadirContent">
+           <form id="form">
+               <div>
+                   <label class="label" for="titulo"></label>
+                   <input #titulo type="text" placeholder="Título" id="titulo" required>
+               </div>
+
+               <div>
+                   <label class="label" for="autor"></label>
+                   <input #autor type="text" placeholder="Autor" id="autor" required>
+               </div>
+
+               <div>
+                   <label class="label" for="precio"></label>
+                   <input #precio type="number" step="0.1" placeholder="Precio" id="precio" required>
+               </div>
+
+               <div>
+                   <label  for="referencia"></label>
+                   <input #ref type="number" placeholder="Referencia" id="referencia" required>
+               </div>
+
+               <div>
+                    <label for="img"></label>
+                    <input #foto type="text" name="img" id="img" placeholder=" Portada del libro" required>
+                </div>
+
+                <button type="button" class="botonLibro"
+                 (click) = "modificarLibro(titulo.value,autor.value,+precio.value,+ref.value,foto.value)">
+                 Modificar libro </button>
+
+           </form>
+       </div>
+    </div>
+
+</main>
