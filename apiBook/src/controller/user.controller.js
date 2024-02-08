@@ -45,7 +45,7 @@ const login = async (req, res) => {
     {
         let respuesta;
         let params = [req.body.email, req.body.password]
-        let userExist = `SELECT user.name, user.last_name, user.email, user.photo FROM appbooks.user
+        let userExist = `SELECT user.id_user, user.name, user.last_name, user.email, user.photo FROM appbooks.user
         WHERE user.email = ? AND user.password = ?`
 
       

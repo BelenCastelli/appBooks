@@ -8,37 +8,41 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    text-align: center;
     justify-content: space-around;
 
     background-color: rgba(245, 245, 220, 0.499); 
     color: var(--colorText2);
 }
 
-h3{
-    font-size: 20pt;
+.titulo{
     text-align: center;
-}
 
- h3:hover{
+    height: 80px;
+    display: flex;
+    align-items: center;
+}
+ .titulo:hover{
     transform: scale(1.20);
     transition: 2s;
 }
 
-.autor, .precio, .ref, .botonComprar{
-    margin-top: 5px;
+.autor, .precio, .ref, .botonComprar, .tapa{
     font-weight: bold;
+  
 }
 .autor{
-    font-size: 22px;
     border-bottom: solid var(--colorText2) 2px;;
 }
 
+.tapa {
+    font-size: 10pt;
+}
+
 .precio{
-    font-size: 14pt;
+    font-size: 12pt;
 }
-.portada{
-    width: 220px;
-}
+.portada {margin-bottom: 5px;}
 
 .boton, .botonEliminar{
     font-family: var(--fontTitle);
@@ -57,7 +61,7 @@ h3{
     height: 30px;
     width: 30px;
     position: relative;
-    margin-top:-15px;
+    margin-top:-5px;
     margin-right: -15px;
     align-self: flex-end;
     background-color: rgb(108, 10, 10);

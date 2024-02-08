@@ -51,7 +51,7 @@ import {HttpClientModule} from '@angular/common/http';
     ToastrModule.forRoot({
       positionClass: 'toast-top-center',
       closeButton: true,
-      timeOut: 2000
+      timeOut: 3000
     }),
     BrowserAnimationsModule,
     HttpClientModule,

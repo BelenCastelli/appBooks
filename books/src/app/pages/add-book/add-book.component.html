@@ -6,33 +6,35 @@
 
        <div id="anadirContent">
            <form id="form">
+
                <div>
-                   <label class="label" for="titulo"></label>
-                   <input #titulo type="text" placeholder="Título" id="titulo" required>
+                   <label class="label" for="title"></label>
+                   <input #title type="text" placeholder="Título" id="title" required>
                </div>
 
                <div>
-                   <label class="label" for="autor"></label>
-                   <input #autor type="text" placeholder="Autor" id="autor" required>
+                <label class="label" for="type"></label>
+                <input #type type="text" placeholder="Tapa Dura/Tapa Blanda" id="type" required>
+            </div>
+
+               <div>
+                   <label class="label" for="author"></label>
+                   <input #author type="text" placeholder="Autor" id="author" required>
                </div>
 
                <div>
-                   <label class="label" for="precio"></label>
-                   <input #precio type="number" step="0.1" placeholder="Precio" id="precio" required>
+                   <label class="label" for="price"></label>
+                   <input #price type="number" step="0.1" placeholder="Precio" id="price" required>
                </div>
 
-               <div>
-                   <label  for="referencia"></label>
-                   <input #ref type="number" placeholder="Referencia" id="referencia" required>
-               </div>
 
                <div>
-                    <label for="img"></label>
-                    <input #foto type="text" name="img" id="img" placeholder=" Portada del libro" required>
+                    <label for="photo"></label>
+                    <input #photo type="text" name="photo" id="photo" placeholder=" Portada del libro" required>
                 </div>
 
                 <button type="button" class="botonLibro"
-                 (click) = "anadirLibro(titulo.value,autor.value,+precio.value,+ref.value,foto.value)">
+                 (click) = "anadirLibro(title.value, type.value, author.value,+price.value,photo.value)">
                  Insertar libro </button>
            </form>
        </div>

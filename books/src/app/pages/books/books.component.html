@@ -16,9 +16,8 @@
     </div>
 
     <section id="content-libros">
-        <div class="libros"
-         *ngIf="booksFilter == undefined else filtrar">
-            <div *ngFor="let book of books; let odd = odd; let index = index">
+        <div class="libros" *ngIf="booksFilter == undefined else filtrar">
+            <div *ngFor="let book of books let odd = odd; let index = index">
                 <app-card [libroPadre] = "book" [odd] = "odd" [indice] = "index" [idLibro] = "book.id_book" (eventoElimina) = "eliminaLibro($event)"></app-card>
             </div>
         </div>
@@ -29,6 +28,8 @@
             </div>
         </ng-template>
     </section>
+
+    
 
 
 </main>

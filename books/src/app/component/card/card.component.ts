@@ -19,8 +19,11 @@ export class CardComponent {
   }
 
     eliminarLibro(idLibro:number) {
-      // console.log(this.indice);
-      this.eventoElimina.emit(this.idLibro)
+      this.eventoElimina.emit(idLibro)
       console.log(this.idLibro)
+      console.log(this.libroPadre.title);
+      console.log(this.libroPadre.id_book);
+      
+      
     }
 }

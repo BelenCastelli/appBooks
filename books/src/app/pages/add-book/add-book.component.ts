@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { Respuesta } from 'src/app/models/respuesta';
 import { ToastrService } from 'ngx-toastr';
+import { UserService } from 'src/app/shared/user.service';
 
 @Component({
   selector: 'app-add-book',
@@ -13,29 +14,33 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class AddBookComponent {
   constructor(public booksService:BooksService,
+              public userService: UserService,
               public router: Router,
               private toastr: ToastrService){
 
   }
 
-    anadirLibro(titulo:string, autor:string, precio:number,ref:number, foto: string){
-      if (titulo && autor && precio && ref && foto){
-      let book = new Book(titulo, autor, precio, foto, ref)
+  anadirLibro(title:string, type:string, author:string, price:number, photo: string){
+      console.log( this.userService.user.id_user);
+      
+      if (title && type && author && price && photo){
+      let bookData = {id_user : this.userService.user.id_user,
+                      title: title,
+                      type: type,
+                      author: author,
+                      price: price,
+                      photo: photo}
 
-      this.booksService.add(book).subscribe((res:Respuesta) =>{
-        if(res.error == false){
-          this.toastr.success('Libro añadido correctamente', 'Éxito', {positionClass: 'toast-center-center',
-                                                                          closeButton:true})
+      this.booksService.add(bookData).subscribe((res:Respuesta) =>{
+        if(!res.error) {
+          this.toastr.success(res.mensaje, 'Éxito')
           this.router.navigate(['/books'])
         } else {
-          this.toastr.error(`${res.mensaje}`, 'Error', {positionClass: 'toast-center-center',
-                                                        closeButton:true})
+          this.toastr.error(`${res.mensaje}`, 'Error')
         }
       })
     } else {
-      this.toastr.error('Todos los campos son obligatorios', 'Error', 
-                        {positionClass: 'toast-center-center',
-                        closeButton:true})
+      this.toastr.error('Todos los campos son obligatorios', 'Error')
     }
   }
 }

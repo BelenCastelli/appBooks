@@ -1,4 +1,5 @@
-const {pool} = require('../database')
+const {pool} = require('../database');
+
 
 const getBooks = async (req,res) => {
     let respuesta; 
@@ -8,7 +9,7 @@ const getBooks = async (req,res) => {
     let [result] = await pool.query(books, param)
     console.log(result);
 
-    if(books != null){
+    if(result != null){
         respuesta = {error: false, codigo:200, data: [result]}
     } else {
         respuesta = {error: true, codigo:200, mensaje: 'No existen libros'}
@@ -55,11 +56,50 @@ const postBooks = async (req, res) => {
         
         let [result] = await pool.query(newBook, params)
 
-        respuesta = {error: false, codigo:200, data: [result]}
+        respuesta = {error: false, codigo:200, mensaje: 'Libro añadido correctamente', data: [result]}
     }
 
 
     res.json(respuesta)
 
 }
-module.exports = {getBooks, getBooksId, postBooks}
+
+const putBook = async (req, res ) =>{
+    let respuesta; 
+
+    let params = [req.body.title, req.body.type, 
+        req.body.author, req.body.price, req.body.photo, 
+        req.body.id_book, req.body.id_user]
+
+    let putBook = `UPDATE book SET title = COALESCE (?, title), 
+                                    type = COALESCE (?, type),
+                                    author = COALESCE (?, author),
+                                    price = COALESCE (?, price),
+                                    photo = COALESCE (?, photo)
+                                        WHERE id_book = ? AND id_user = ?`
+     let [result] = await pool.query(putBook, params)
+ 
+    if(result.affectedRows == 0) 
+        respuesta = {error: true, codigo:200, mensaje: 'No se ha encontrado el libro'}
+    else 
+        respuesta = {error: false, codigo:200, mensaje: 'Libro modificado correctamente', data: [result]}
+
+     res.json(respuesta)
+}
+
+const deleteBook = async (req, res) => {
+    let respuesta; 
+
+    let param = [req.body.id_book]
+
+    let deleteBook = `DELETE FROM book WHERE id_book = ?`
+
+     let [result] = await pool.query(deleteBook, param)
+
+        if(result.affectedRows == 0)
+            respuesta = {error: true, codigo:200, mensaje: 'No se ha encontrado el libro'}
+        else 
+            respuesta = {error: false, codigo:200, mensaje: 'Libro eliminado correctamente', data: [result]}
+    res.json(respuesta);
+}
+module.exports = {getBooks, getBooksId, postBooks, putBook, deleteBook}
