@@ -12,6 +12,7 @@ import { UserService } from 'src/app/shared/user.service';
 export class ProfileComponent {
 
   public user:User
+
   constructor(public userService: UserService,
               private toastr: ToastrService){
       this.user = userService.user
@@ -19,19 +20,25 @@ export class ProfileComponent {
 
   modificarDatos(name:string, last_name:string, email:string, password: string, photo:string){
   
-   let putUser = new User(this.userService.user.id_user || null, 
+   let putUser = new User(this.userService.user.id_user, 
       name || null, last_name || null, email || null, password || null)
       putUser.photo = photo || null
- 
+      
   this.userService.edit(putUser).subscribe((res:Respuesta) => {
-    if(!res.error)
+    if(!res.error){
+      this.userService.user.name = putUser.name || this.userService.user.name
+      this.userService.user.last_name = putUser.last_name || this.userService.user.last_name
+      this.userService.user.email = putUser.email || this.userService.user.email
+      this.userService.user.password = putUser.password || this.userService.user.password
+      this.userService.user.photo = putUser.photo || this.userService.user.photo
+      
       this.toastr.success(res.mensaje)
-    else 
-      this.toastr.error('No se han podido modificar lo datos', 'ERROR')
+  
 
+    }else 
+      this.toastr.error('No se han podido modificar los datos', 'ERROR')
   })
 
   }
-
 
 }

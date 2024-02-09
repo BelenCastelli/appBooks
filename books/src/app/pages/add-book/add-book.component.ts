@@ -24,13 +24,9 @@ export class AddBookComponent {
       console.log( this.userService.user.id_user);
       
       if (title && type && author && price && photo){
-      let bookData = {id_user : this.userService.user.id_user,
-                      title: title,
-                      type: type,
-                      author: author,
-                      price: price,
-                      photo: photo}
-
+      let bookData:Book = new Book(title, type, author, price, photo)
+      bookData.id_user = this.userService.user.id_user
+      
       this.booksService.add(bookData).subscribe((res:Respuesta) =>{
         if(!res.error) {
           this.toastr.success(res.mensaje, 'Éxito')

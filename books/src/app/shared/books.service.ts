@@ -24,7 +24,7 @@ export class BooksService {
     return this.http.get(this.url + '/' + id_user + '/' + id_book) 
   }
 
-  public add(bookData:object): Observable<object>{
+  public add(bookData:Book): Observable<object>{
     return this.http.post(this.url, bookData );
   }
 

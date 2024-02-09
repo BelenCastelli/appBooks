@@ -2,24 +2,24 @@
     <section class="seccion" id="perfil">
         <div class="s-content">
             <div id="img-content">
-                <img id="img" src= {{user.photo}} >
+                <img id="img" src= {{userService.user.photo}} >
             </div>
             <div class="datos datos-t">
-                <h4>{{user.name}} {{user.last_name}}</h4>
+                <h4>{{userService.user.name}} {{userService.user.last_name}}</h4>
             </div>
             <div class="datos">
                 <label class="label" for="nombre">Nombre</label>
-                <input disabled ="text" id="nombre" [value]="user.name">
+                <input disabled ="text" id="nombre" [value]="userService.user.name">
             </div>
 
             <div class="datos">
                 <label class="label" for="apellido">Apellidos</label>
-                <input disabled ="text" id="apellido" [value]="user.last_name">
+                <input disabled ="text" id="apellido" [value]="userService.user.last_name">
             </div>
 
             <div class="datos">
                 <label class="label" for="email">Correo</label>
-                <input disabled ="email" id="email" [value]="user.email">
+                <input disabled ="email" id="email" [value]="userService.user.email">
             </div>
         </div>
     </section>
@@ -27,7 +27,7 @@
     <section class="seccion" id="modificar">
         <div class="s-content">
             <div class="datos datos-t">
-                <h2>Editar datos</h2>
+                <h3>Editar datos</h3>
             </div>
 
             <div>
@@ -57,8 +57,10 @@
                         <input type="url" id="photo" #photo placeholder="URL">
                     </div>
                     <div id="button-div">
-                        <button (click) = modificarDatos(name.value,last_name.value,email.value,password.value,photo.value) type="button" id="button-modificar">Modificar</button>
+                        <button (click) = modificarDatos(name.value,last_name.value,email.value,password.value,photo.value) type="button" class="button-modificar">Modificar</button>
+                        <button type="reset" class="button-modificar"> Limpiar Formulario</button>
                     </div>
+                    
 
                 </form>
             </div>

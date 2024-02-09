@@ -111,23 +111,27 @@ form{
 
 #button-div{
     align-self: center;
+    display: flex;
+    flex-direction: column;
+
 }
 
-#button-modificar{
-    height: 40px;
-    width: 150px;
+.button-modificar{
+    height: 35px;
+    width: 170px;
     margin-top: 20px;
+    padding: 5px;
 
     background-image: var(--backgroundFooter);
     color: var(--colorText);
-    font-size: 14pt;
+    font-size: 11pt;
     font-family: var(--fontTitle);
     border: none;
 
     cursor: pointer;
 }
 
-#button-modificar:hover{
+.button-modificar:hover{
     background-image: none;
     background-color: var(--background);
     color: var(--colorText2);

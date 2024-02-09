@@ -23,14 +23,9 @@ export class UpdateBookComponent {
     
     if (id_book){
 
-      let bookData = {
-                      title: title || null,
-                      type: type || null,
-                      author: author || null,
-                      price: price || null,
-                      photo: photo || null,
-                      id_book : id_book || null,
-                      id_user: this.userService.user.id_user}
+      let bookData:Book = new Book(title || null, type || null, author || null, price || null, photo || null)
+      bookData.id_book = id_book 
+      bookData.id_user = this.userService.user.id_user
 
       this.booksService.edit(bookData).subscribe((res:Respuesta) => {
         if(res.error == false){

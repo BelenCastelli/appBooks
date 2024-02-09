@@ -36,11 +36,11 @@ const getBooksId = async (req, res) => {
 const postBooks = async (req, res) => {
     let respuesta; 
 
-    let reqExist = [req.body.id_user, req.body.title, req.body.type, 
-        req.body.author, req.body.price]
+    let reqExist = [req.body.title, req.body.type, 
+        req.body.author, req.body.price, req.body.id_user]
     
     let existQuery = `SELECT * FROM appbooks.book 
-                WHERE id_user = ? AND title = ? AND type = ? AND author = ? AND price = ?`
+                WHERE  title = ? AND type = ? AND author = ? AND price = ? AND id_user = ?` 
     
     let [exist] = await pool.query(existQuery, reqExist)
 
