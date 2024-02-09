@@ -68,4 +68,27 @@ const login = async (req, res) => {
     }
 }
 
-module.exports = {getStart, postUsers, login}
+const putUser = async (req, res) => {
+
+    let respuesta; 
+
+    let params = [req.body.name, req.body.last_name, req.body.email,
+                    req.body.photo, req.body.password, req.body.id_user]
+    console.log(params);
+
+    let putUser = `UPDATE user SET name = COALESCE (?, name), 
+                                    last_name = COALESCE (?, last_name),
+                                    email = COALESCE (?, email),
+                                    photo = COALESCE (?, photo),
+                                    password = COALESCE (?, password)
+                                    WHERE id_user = ?`
+    console.log(putUser);
+    
+    let [result] = await pool.query(putUser, params)
+    console.log(result);
+    respuesta = {error: false, codigo:200, mensaje: 'datos modificados correctamente', data: [result]}
+    
+    res.json(respuesta)
+}
+
+module.exports = {getStart, postUsers, login, putUser}

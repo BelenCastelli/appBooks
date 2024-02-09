@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { ToastrService } from 'ngx-toastr';
+import { Respuesta } from 'src/app/models/respuesta';
 import {User} from "src/app/models/user";
 import { UserService } from 'src/app/shared/user.service';
 
@@ -9,60 +11,25 @@ import { UserService } from 'src/app/shared/user.service';
 })
 export class ProfileComponent {
 
-
- public user:User
- public isHidden:boolean
- public isHidden2: boolean
- public color: string
- 
-  constructor(public userService: UserService){
-    this.user = userService.user
-    this.isHidden = true;
-    this.isHidden2 = true
-    this.color;
+  public user:User
+  constructor(public userService: UserService,
+              private toastr: ToastrService){
+      this.user = userService.user
   }
 
-
-// *NOTE - NECESITO EN EL BACK UN PUT
-  modificarDatos(newName:string, newLastaName:string, newEmail:string,newPhoto:string){
-
-    this.user.name = newName === "" ?  this.user.name : newName;
-
-    this.user.last_name = newLastaName == "" ? this.user.last_name : newLastaName;
- 
-    this.user.email = newEmail == "" ? this.user.email : newEmail;
+  modificarDatos(name:string, last_name:string, email:string, password: string, photo:string){
   
-    this.user.photo = newPhoto == "" ? this.user.photo : newPhoto;
+   let putUser = new User(this.userService.user.id_user || null, 
+      name || null, last_name || null, email || null, password || null)
+      putUser.photo = photo || null
+ 
+  this.userService.edit(putUser).subscribe((res:Respuesta) => {
+    if(!res.error)
+      this.toastr.success(res.mensaje)
+    else 
+      this.toastr.error('No se han podido modificar lo datos', 'ERROR')
 
-    if(newName == "" && newLastaName == "" && newEmail == "" && newPhoto ==""){
-      this.isHidden2 = false;
-      this.isHidden = true;
-      this.color = "rojo"
-    } else
-    {
-      this.isHidden = false;
-      this.isHidden2 = true
-      this.color = "verde"
-    }
-
-    // Simplificado
-    
-    // modificarDatos(newName: string, newLastaName: string, newEmail: string, newPhoto: string) {
-    //   this.user.name = newName || this.user.name;
-    //   this.user.last_name = newLastaName || this.user.last_name;
-    //   this.user.email = newEmail || this.user.email;
-    //   this.user.photo = newPhoto || this.user.photo;
-    
-    //   if (!newName && !newLastaName && !newEmail && !newPhoto) {
-    //     this.isHidden2 = false;
-    //     this.isHidden = true;
-    //     this.color = "rojo";
-    //   } else {
-    //     this.isHidden = false;
-    //     this.isHidden2 = true;
-    //     this.color = "verde";
-    //   }
-    // }
+  })
 
   }
 

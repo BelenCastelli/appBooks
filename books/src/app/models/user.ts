@@ -6,13 +6,13 @@ export class User {
     public photo: string;
     public password: string
 
-    constructor(){
-        this.id_user 
-        this.name 
-        this.last_name 
-        this.email 
+    constructor(id_user:number, name: string, last_name:string, email:string, password:string){
+        this.id_user = id_user
+        this.name = name
+        this.last_name = last_name
+        this.email = email
         this.photo 
-        this.password
+        this.password = password
 
     }
 

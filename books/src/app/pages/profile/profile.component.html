@@ -39,24 +39,27 @@
         
                     <div class="datos">
                         <label  for="lastName"></label>
-                        <input type="text" id="lastName" #lastName placeholder="Apellido">
+                        <input type="text" id="lastName" #last_name placeholder="Apellido">
                     </div>
         
                     <div class="datos">
                         <label  for="email"></label>
                         <input type="email" id=email #email placeholder="Correo">
                     </div>
+
+                    <div class="datos">
+                        <label  for="passwword"></label>
+                        <input type="password" id=password #password placeholder="Contraseña">
+                    </div>
+
                     <div class="datos">
                         <label  for="photo"></label>
                         <input type="url" id="photo" #photo placeholder="URL">
                     </div>
                     <div id="button-div">
-                        <button (click) = modificarDatos(name.value,lastName.value,email.value,photo.value) type="button" id="button-modificar">Modificar</button>
+                        <button (click) = modificarDatos(name.value,last_name.value,email.value,password.value,photo.value) type="button" id="button-modificar">Modificar</button>
                     </div>
-                    <div id="cambios">
-                        <p class = {{color}} [hidden] = "isHidden">Usario Actualizado</p>
-                        <p class = {{color}} [hidden] = "isHidden2">No se han detectado cambios</p>
-                    </div>
+
                 </form>
             </div>
         </div>

@@ -23,4 +23,11 @@ export class UserService {
     this.url = "http://localhost:3000/login"
     return this.http.post(this.url, user)
   }
+
+  edit(usuario:User):Observable<object>{
+    this.url = "http://localhost:3000/usuarios"
+    console.log(usuario);
+    
+    return this.http.put(this.url, usuario)
+  }
 }

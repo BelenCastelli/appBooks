@@ -21,15 +21,15 @@ export class UpdateBookComponent {
 
   modificarLibro(id_book: number, title:string, type:string, author:string, price:number, photo: string){
     
-    if (id_book && title && type && author && price && photo){
+    if (id_book){
 
       let bookData = {
-                      title: title,
-                      type: type,
-                      author: author,
-                      price: price,
-                      photo: photo,
-                      id_book : id_book,
+                      title: title || null,
+                      type: type || null,
+                      author: author || null,
+                      price: price || null,
+                      photo: photo || null,
+                      id_book : id_book || null,
                       id_user: this.userService.user.id_user}
 
       this.booksService.edit(bookData).subscribe((res:Respuesta) => {
@@ -41,6 +41,6 @@ export class UpdateBookComponent {
         }
       })
     } else {
-      this.toastr.error('Todos los campos son obligatorios', 'Error')
+      this.toastr.error('La referencia del libro es obligatoria', 'Error')
     }
 }}
